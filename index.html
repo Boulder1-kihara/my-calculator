@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="icon" href="download.jpg" type="image/png">
+    <style>
+        body{
+            background-color: #1a1818;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    
+        .container{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 10px;
+            width: 480px;
+            height: 700px;
+            margin: auto;
+            background-color: #1a1818;
+            border-radius: 24px;
+            gap: 10px;
+            padding: 10px;
+            border: white 2px solid;
+        }
+        .screen{
+            grid-column: 1 / -1;
+            grid-row: 1 / 2;
+            background-color: #2c2a2a;
+            border-radius: 14px 14px ;
+            margin: 10px;
+            height: 70px;
+            display: flex;
+            overflow: hidden;
+            resize: none;
+            box-sizing: border-box;
+            padding: 20px;
+            font-size: 40px;
+        }
+        .eq{
+            border-radius: 100px;
+            background-color: blue;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-column: 4 / 5;
+            position: relative;
+            cursor: pointer;
+        }
+        .clear{
+            border-radius: 100px;
+            background-color: red;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .dec{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .zero{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .one{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .two{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .three{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .plus{
+            border-radius: 100px;
+            background-color: blue;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .four{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .five{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .six{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .min{
+            border-radius: 100px;
+            background-color: blue;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .seven{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .eight{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .nine{
+            border-radius: 100px;
+            background-color: #2c2a2a;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .multi{
+            border-radius: 100px;
+            background-color: blue;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .AC{
+            border-radius: 100px;
+            background-color: blue;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .brac{
+            border-radius: 100px;
+            background-color: blue;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .perc{
+            border-radius: 100px;
+            background-color: blue;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .div{
+            border-radius: 100px;
+            background-color: blue;
+            height: 70px;
+            width: 70px;
+            margin: 20px;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .brac:hover, .perc:hover, .div:hover, .AC:hover, .plus:hover, .min:hover, .multi:hover, .eq:hover, .clear:hover{
+            background-color: #1a1818;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .one:hover, .two:hover, .three:hover, .four:hover, .five:hover, .six:hover, .seven:hover, .eight:hover, .nine:hover, .zero:hover, .dec:hover{
+            background-color: #1a1818;
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        /* Adjust font size for very small screens if needed */
+        @media (max-width: 320px) {
+            .screen {
+                font-size: 6vw; /* Keep a reasonable minimum */
+            }
+            .eq, .clear, .dec, .zero, .div, .perc, .brac, .AC, .multi, .nine, .eight, .seven, .min, .six, .five, .four, .plus, .three, .two, .one  {
+                font-size: 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="screen">0</div>
+        <div class="AC">AC</div>
+        <div class="brac">( )</div>
+        <div class="perc">%</div>
+        <div class="div">÷</div>
+        <div class="seven">7</div>
+        <div class="eight">8</div>
+        <div class="nine">9</div>
+        <div class="multi">*</div>
+        <div class="four">4</div>
+        <div class="five">5</div>
+        <div class="six">6</div>
+        <div class="min">-</div>
+        <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+        <div class="plus">+</div>
+        <div class="zero">0</div>
+        <div class="dec">·</div>
+        <div class="clear">clear</div>
+        <div class="eq">=</div>
+    </div>
+    <script>
+        const screen = document.querySelector('.screen');
+        const buttons = document.querySelectorAll('.container > div');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const buttonText = button.textContent;
+                if (buttonText === 'AC' || buttonText === 'CLR') {
+                    screen.textContent = '0';
+                } else if (buttonText === '=') {
+                    try {
+                        screen.textContent = eval(screen.textContent.replace('×', '*').replace('÷', '/' ).replace('·', '.'));
+                    } catch (error) {
+                        screen.textContent = 'math error 😜😜😜';
+                    }
+                } else {
+                    if (screen.textContent === '0' || screen.textContent === 'math error') {
+                        screen.textContent = buttonText;
+                    } else {
+                        screen.textContent += buttonText;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
